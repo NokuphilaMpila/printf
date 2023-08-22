@@ -8,6 +8,6 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
-void handle_decimal(va_list args, int *count);
+int print_integer(va_list args);
 
 #endif
