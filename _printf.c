@@ -35,16 +35,14 @@ int print_string(va_list args)
 
 	if (str == NULL)
 	{
-		count += _printf("(null)");
-		count += 6;
+		str = "(null)";
 	}
-	else
+
+	while (*str)
 	{
-		while (*str)
-		{
-			count += _putchar(*str++);
-		}
+		count += _putchar(*str++);
 	}
+
 	return (count);
 }
 
