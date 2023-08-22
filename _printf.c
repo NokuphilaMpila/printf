@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 
-	; if (format == NULL)
+	if (format == NULL)
 		return (-1);
 	va_start(args, format);
 
@@ -56,6 +56,7 @@ int _printf(const char *format, ...)
 			count += _putchar(*format);
 		}
 	}
+
 	va_end(args);
 	return (count);
 }
