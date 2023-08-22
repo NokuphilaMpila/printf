@@ -14,7 +14,7 @@ int print_integer(va_list args)
 	int num_digits = 0;
 	int temp_num = num;
 	char buffer[12];
-	buffer[index] = temp_num % 10 + '0';
+	int index = 0
 
 	if (num < 0)
 	{
@@ -29,6 +29,7 @@ int print_integer(va_list args)
 	}
 	while (temp_num != 0)
 	{
+		buffer[index++] = temp_num % 10 + '0';
 		temp_num /= 10;
 		num_digits++;
 	}
