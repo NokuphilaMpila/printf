@@ -1,42 +1,48 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * print_integer - Prints an int
- * @args: va_list of arguments
- * Return: prints integers
+ * integer_printf - Prints an output according to format
+ * @format: format specifier
+ * Return: Number of chars printed
  */
-int print_integer(va_list args)
+int integer_printf(const char *format, ...)
 {
-	int num = va_arg(args, int);
+	va_list args;
 	int count = 0;
-	int num_digits = 0;
-	int temp_num = num;
-	char buffer[12];
-	int index = 0;
-	int i;
 
-	if (num < 0)
+	if (format == NULL)
+	return (-1);
+
+	va_start(args, format);
+	while (*format)
 	{
-	_putchar('-');
-	count++;
-	num = -num;
+		if (*format != '%')
+		{
+			count += _putchar(*format++);
+			continue;
+		}
+		format++;
+
+		if (*format == '\0')
+		{
+			va_end(args);
+			return (-1);
+		}
+		if (*format == '%')
+		{
+			count += _putchar('%');
+		}
+		else if (*format == 'd' || *format == 'i')
+		{
+			int num = va_arg(args, int);
+			count += print integer(num);
+		}
+		else
+		{
+			count += _putchar('%') + _putchar(*format);
+		}
+		format++;
 	}
-	if (num == 0)
-	{
-		_putchar('0');
-		return (count + 1);
-	}
-	while (temp_num != 0)
-	{
-		buffer[index++] = temp_num % 10 + '0';
-		temp_num /= 10;
-		num_digits++;
-	}
-	for (i = num_digits - 1; i >= 0; i--)
-	{
-		_putchar(buffer[i]);
-		count++;
-	}
+	va_end(args);
 	return (count);
 }
-
