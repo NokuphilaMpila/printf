@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -13,5 +14,9 @@ int integer_printf(const char *format, ...);
 int get_num_length(int num);
 void reverse_string(char *str, int length);
 void int_to_string(int num, char *str);
+void handle_decimal(va_list args, int *count);
+void handle_char(va_list args, int *count);
+void handle_string(va_list args, int *count);
+void handle_unknown(const char *format, int *count);
 
 #endif
