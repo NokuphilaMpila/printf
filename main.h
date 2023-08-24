@@ -12,7 +12,6 @@ int print_integer(va_list args);
 int integer_printf(const char *format, ...);
 int get_num_length(int num);
 void reverse_string(char *str, int length);
-int int_to_string(int num, char *str);
-
+void int_to_string(int num, char *str);
 
 #endif
