@@ -9,6 +9,7 @@ int _putchar(char c)
 int print_char(va_list args)
 {
 	char c = (char) va_arg(args, int);
+
 	return (_putchar(c));
 }
 
@@ -30,51 +31,46 @@ int print_string(va_list args)
 	return (count);
 
 }
+
 int print_int(va_list args)
 {
 	int num = va_arg(args, int);
 	int count = 0;
 	int num_length = 0;
 	int temp = num;
-	int divisor, digit;
+	int divisor = 1;
+	int i = 1;
 
 	if (num == 0)
 	{
 		count += _putchar('0');
-		return (1);
+		return (count);
 	}
-
 	if (num < 0)
 	{
 		count += _putchar('-');
 		num *= -1;
 	}
-
 	temp = num;
 	while (temp != 0)
 	{
 		temp /= 10;
 		num_length++;
 	}
+	divisor = 1;
 
-	temp = num;
+	for (i = 1; i < num_length; i++)
 	{
-		int i;
-		for (i = 1; i < num_length; i++)
-		{
-			divisor = 10 * divisor;
-		}
-		
-		while (num_length > 0)
-		{
-			digit = temp / divisor;
-			count += _putchar(digit + '0');
-			temp = temp % divisor;
-			num_length--;
-			divisor = divisor / 10;
-		}
+		divisor *= 10;
 	}
-	
+	while (divisor != 0)
+	{
+	int digit = num / divisor;
+
+	count += _putchar(digit + '0');
+	num %= divisor;
+	divisor /= 10;
+	}
 	return (count);
 }
 
@@ -129,5 +125,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-
