@@ -2,8 +2,9 @@
 #define MAIN_H
 
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
+#include <stdlib.h>
 
 int _putchar(char c);
 int _printf(const char *format, ...);
@@ -18,5 +19,6 @@ void handle_decimal(va_list args, int *count);
 void handle_char(va_list args, int *count);
 void handle_string(va_list args, int *count);
 void handle_unknown(const char *format, int *count);
+int print_number(long num, int *count);
 
 #endif
